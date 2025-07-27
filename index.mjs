@@ -36,6 +36,7 @@ async function handleSQSEvent(event) {
             if (media_format !== "PHOTO") {
                 console.log(`Skipping non-photo media: ${name} (${id})`);
                 await updateMediaTextAnalysis(id, false); // Not a photo, so no text analysis
+                continue;
             }
             console.log(`Processing media item: ${name} (${id})`);
 
@@ -86,15 +87,16 @@ async function processMediaItem(id, gmbId, name) {
             imageBuffer = await downloadFileFromS3(s3Key);
         } catch (s3Error) {
             console.error(`Failed to download image from S3 for media ${name} (${id}):`, s3Error);
+            return;
         }
         const hasTooMuchText = await photoChecker(imageBuffer);
 
         await updateMediaTextAnalysis(id, hasTooMuchText);
 
-        console.log(`Media ${id} analysis complete: hasTooMuchText = ${hasTooMuchText}`);
+        console.log(`Media ${name} (${id}) analysis complete: hasTooMuchText = ${hasTooMuchText}`);
         
     } catch (error) {
-        console.error(`Error processing media item ${id}:`, error);        
+        console.error(`Error processing media item ${name} (${id}):`, error);
         throw error;
     }
 }
