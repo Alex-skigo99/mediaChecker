@@ -1,5 +1,5 @@
-import knex from "/opt/nodejs/db";
-import DatabaseTableConstants from "/opt/nodejs/DatabaseTableConstants";
+import knex from "/opt/nodejs/db.js";
+import DatabaseTableConstants from "/opt/nodejs/DatabaseTableConstants.js";
 
 export async function updateMediaTextAnalysis(id, hasTooMuchText) {
     try {

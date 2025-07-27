@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "A Node.js application for checking documents",
   "main": "index.mjs",
+  "type": "module",
   "scripts": {
     "start": "node index.mjs"
   },

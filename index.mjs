@@ -1,5 +1,5 @@
-import knex from "/opt/nodejs/db";
-import DatabaseTableConstants from "/opt/nodejs/DatabaseTableConstants";
+import knex from "/opt/nodejs/db.js";
+import DatabaseTableConstants from "/opt/nodejs/DatabaseTableConstants.js";
 import { downloadFileFromS3 } from "./utils/s3Utils.js";
 import { photoChecker } from "./utils/photoChecker.js";
 import { updateMediaTextAnalysis } from "./utils/updateMediaTextAnalysis.js";

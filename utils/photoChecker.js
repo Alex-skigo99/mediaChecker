@@ -1,4 +1,4 @@
-import { generateResponseVision } from "./utils";
+import { generateResponseVision } from "./utils.js";
 
 export async function photoChecker(imageBuffer) {
 
