@@ -1,0 +1,20 @@
+{
+  "name": "documents-checker",
+  "version": "1.0.0",
+  "description": "A Node.js application for checking documents",
+  "main": "index.mjs",
+  "scripts": {
+    "start": "node index.mjs"
+  },
+  "keywords": [
+    "documents",
+    "checker"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.0.0",
+    "dotenv": "^17.2.0",
+    "openai": "^5.8.2"
+  }
+}
