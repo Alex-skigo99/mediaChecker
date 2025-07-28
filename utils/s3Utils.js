@@ -17,7 +17,8 @@ export async function downloadFileFromS3(s3Key) {
             chunks.push(chunk);
         }
         
-        return Buffer.concat(chunks);
+        const buffer = Buffer.concat(chunks);
+        return { buffer, contentType: response.ContentType };
     } catch (error) {
         throw new Error(`Failed to download file from S3: ${error.message}`);
     }

@@ -82,14 +82,19 @@ async function processMediaItem(id, gmbId, name) {
 
         const s3Key = `${gmbId}/${id}`;
         let imageBuffer;
-        
+        let photoContentType;
+
         try {
-            imageBuffer = await downloadFileFromS3(s3Key);
+            const { buffer, contentType } = await downloadFileFromS3(s3Key);
+            imageBuffer = buffer;
+            photoContentType = contentType;
+
+            console.log(`Downloaded image from S3 with content type: ${contentType}`);
         } catch (s3Error) {
             console.error(`Failed to download image from S3 for media ${name} (${id}):`, s3Error);
             return;
         }
-        const hasTooMuchText = await photoChecker(imageBuffer);
+        const hasTooMuchText = await photoChecker(imageBuffer, photoContentType);
 
         await updateMediaTextAnalysis(id, hasTooMuchText);
 

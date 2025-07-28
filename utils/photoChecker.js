@@ -1,9 +1,9 @@
 import { generateResponseVision } from "./utils.js";
 
-export async function photoChecker(imageBuffer) {
+export async function photoChecker(imageBuffer, contentType) {
 
     const base64Image = imageBuffer.toString('base64');
-    const imageUrl = `data:${mediaItem.media_format};base64,${base64Image}`;
+    const imageUrl = `data:${contentType};base64,${base64Image}`;
     
     const prompt = `Analyze this business image for text content that might violate Google My Business policies. 
     
